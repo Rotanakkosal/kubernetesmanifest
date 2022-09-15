@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gitops-demo
+  name: gitops-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gitops-demo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gitops-demo
+    spec:
+      containers:
+      - image: rotanakkosal/gitops:6
+        name: gitops-demo
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitops-service
+  labels:
+    app: gitops-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: gitops-demo
