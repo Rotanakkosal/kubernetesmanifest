@@ -18,7 +18,7 @@ spec:
         app: gitops-demo
     spec:
       containers:
-      - image: rotanakkosal/gitops:9
+      - image: rotanakkosal/gitops:1
         name: gitops-demo
         resources: {}
 status: {}
